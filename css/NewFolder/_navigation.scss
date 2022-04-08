@@ -19,9 +19,6 @@ nav {
 // Breadcrumb Navigation
 
 nav.breadcrumb {
-    border-left: none;
-    border-right: none;
-    border: .1rem dashed var(--background-color-2);
     margin-bottom: 1em;
 
     ul {
@@ -43,6 +40,10 @@ nav.breadcrumb {
                 &:hover {
                     color: var(--tertiary-color);
                 }
+            }
+
+            &:first-child a {
+                padding-left: 0;
             }
 
             &:last-child {

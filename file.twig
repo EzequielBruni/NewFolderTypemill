@@ -1,9 +1,5 @@
 {# The (very basic) markup for individual files/pages. #}
 
-{% include 'partials/breadcrumb.twig' %}
-
-
-
     <section id="pagecontent">
 
         {% if settings.themes.NewFolderTypemill.pagelayout == "layoutsideleft" %}
@@ -17,6 +13,8 @@
         {% endif %}
 
         <div class="pagewrap">
+
+        {% include 'partials/breadcrumb.twig' %}
 
             <div class="content">
                 <article>
