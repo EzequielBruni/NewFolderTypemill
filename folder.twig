@@ -2,31 +2,60 @@
 
 {% include 'partials/breadcrumb.twig' %}
 
-<article>
 
-	<header>
-        <h1>{{ title }}</h1>
-    </header>
-		
-	{{ content }}
 
-</article>
+    <section id="pagecontent">
 
-<nav class="folder">
+        {% if settings.themes.NewFolderTypemill.pagelayout == "layoutsideleft" %}
 
-    <ul>
+            <header class="layoutsideleftheader" >
+                <div class="headerwrap">
+                    <h1>{{ title }}</h1>
+                </div>
+            </header>
 
-        {# A dead-simple loop that grabs the subpages. #}
+        {% endif %}
 
-        {% for article in item.folderContent %}
-            {% set page = getPageMeta(settings, article) %}
-            <li>
-                <a href="{{ article.urlAbs }}">
-                    <h2>{{ article.name }}</h2>
-                    <p>{{ page.meta.description|slice(0,150) }}...</p>
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+        <div class="pagewrap">
 
-</nav>
+            <div class="content">
+                <article>
+
+                    {% if settings.themes.NewFolderTypemill.pagelayout == "layoutcentered" %}
+
+                        <header>
+                            <h1>{{ title }}</h1>
+                        </header>
+
+                    {% endif %}
+                    
+                    {{ content }}
+                    
+                </article>
+
+            </div>
+
+
+
+            <nav class="folder">
+
+                <ul>
+
+                    {# A dead-simple loop that grabs the subpages. #}
+
+                    {% for article in item.folderContent %}
+                        {% set page = getPageMeta(settings, article) %}
+                        <li>
+                            <a href="{{ article.urlAbs }}">
+                                <h2>{{ article.name }}</h2>
+                                <p>{{ page.meta.description|slice(0,150) }}...</p>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            </nav>
+
+
+        </div>
+    </section>

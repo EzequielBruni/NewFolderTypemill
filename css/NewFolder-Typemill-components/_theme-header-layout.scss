@@ -46,10 +46,17 @@ header#pageheader {
 /* Some slight alternate styling for the "Sidebar on the left" layout */
 
 .layoutsideleft {
+
+    header#pageheader {
+        // This will darken the sidebar/header's background by default.
+        box-shadow: inset 9999em 0px rgba(0,0,0,0.5);
+    }
+
     header#pageheader div.pagewrap {
         padding-bottom: 4rem;
         padding-top: 4rem;
     }
+    
 }
 
 @media screen and (min-width: 1050px) {

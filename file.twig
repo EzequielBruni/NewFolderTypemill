@@ -2,14 +2,38 @@
 
 {% include 'partials/breadcrumb.twig' %}
 
-<div class="content">
-    <article>
-    
-        <header>
-            <h1>{{ title }}</h1>
-        </header>
-    
-        {{ content }}
-    
-    </article>
-</div>
+
+
+    <section id="pagecontent">
+
+        {% if settings.themes.NewFolderTypemill.pagelayout == "layoutsideleft" %}
+
+            <header class="layoutsideleftheader" >
+                <div class="headerwrap">
+                    <h1>{{ title }}</h1>
+                </div>
+            </header>
+
+        {% endif %}
+
+        <div class="pagewrap">
+
+            <div class="content">
+                <article>
+
+                    {% if settings.themes.NewFolderTypemill.pagelayout == "layoutcentered" %}
+
+                        <header>
+                            <h1>{{ title }}</h1>
+                        </header>
+
+                    {% endif %}
+                    
+                    {{ content }}
+                    
+                </article>
+
+            </div>
+
+        </div>
+    </section>

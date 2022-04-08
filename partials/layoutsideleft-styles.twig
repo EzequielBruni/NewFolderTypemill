@@ -3,57 +3,47 @@
 
 <style>
 
-    {# Styles to darken the header/sidebar section by default #}
-
-    #pageheader {
-        position: relative;
-    }
-
-    #pageheader div.pagewrap {
-            z-index: 999;
-    }
-
-    #pageheader::before {
-        content: " ";
-        background-color: rgba(0,0,0,{{ settings.themes.NewFolderTypemill.headerimagedarken }});
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-    }
-
-
-
-    {% if metatabs.meta.heroimage != '' %}
     {# Styles for the hero images #}
-    #pagecontent article header {
-        background-image: url({{ base_url }}/{{ metatabs.meta.heroimage }});
+    #pagecontent header.layoutsideleftheader {
+        {% if metatabs.meta.heroimage != '' %}
+            background-image: url({{ base_url }}/{{ metatabs.meta.heroimage }});
+        {% else %}
+            background-image: url({{ base_url }}{{ settings.themes.NewFolderTypemill.headerimage }});
+        {% endif %}
         position: relative;
         background-size: cover;
-        height: 20rem;
         margin-bottom: 2rem;
-        margin-left: -3rem;
-        margin-right: -3rem;
+    }
+
+    #pagecontent header.layoutsideleftheader div.headerwrap {
+        margin: 0 auto;
+        max-width: 80ch;
+        {% if home %}
+            min-height: 20rem;
+        {% else %}
+            min-height: 15rem;
+        {% endif %}
+        padding: 2rem 4rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: end;
     }
 
     
-    #pagecontent article header::before {
-        content: " ";
+    #pagecontent header.layoutsideleftheader::before {
         backdrop-filter: blur({{ settings.themes.NewFolderTypemill.headerimageblur }}px);
         background-color: rgba(0,0,0,{{ settings.themes.NewFolderTypemill.headerimagedarken }});
+        content: " ";
+        height: 100%;
         position: absolute;
         width: 100%;
-        height: 100%;
         z-index: 1;
     }
 
-    #pagecontent article header h1 {
+    #pagecontent header.layoutsideleftheader h1 {
         color: var(--text-color-2);
-        z-index: 999;
-        position: absolute;
-        width: calc(100% - 6rem);
-        bottom: 0rem;
-        left: 3rem;
+        position: relative;
+        z-index: 9999;
     }
 
 
@@ -62,11 +52,11 @@
     look as good around the edges.#}
 
     @supports not (backdrop-filter: blur(7px)) {
-        #pagecontent article header {
+        #pagecontent header.layoutsideleftheader {
             overflow: hidden;
         }
 
-        #pagecontent article header::before {
+        #pagecontent header.layoutsideleftheader::before {
             content: " ";
 
             {% if metatabs.meta.heroimage != '' %}
@@ -75,16 +65,14 @@
                 background-image: url({{ base_url }}/themes/NewFolderTypemill/images/folder-bg.png);
             {% endif %}
             filter: blur({{ settings.themes.NewFolderTypemill.headerimageblur }}px);
-            background-size: cover;
             background-position: center;
-            position: absolute;
-            width: 100%;
+            background-size: cover;
             height: 100%;
             overflow: hidden;
+            position: absolute;
+            width: 100%;
             z-index: 1;
         }
     }
-
-    {% endif %}
 </style>
 

@@ -1,21 +1,41 @@
 {# Some very simple markup for the home page. #}
 
-<div class="content">
-    <article>
 
-        <header>
-            <h1>{{ title }}</h1>
-        </header>
-        
-        {{ content }}
-        
-    </article>
+    <section id="pagecontent">
 
-</div>
+        {% if settings.themes.NewFolderTypemill.pagelayout == "layoutsideleft" %}
+
+            <header class="layoutsideleftheader" >
+                <div class="headerwrap">
+                    <h1>{{ title }}</h1>
+                </div>
+            </header>
+
+        {% endif %}
+
+        <div class="pagewrap">
+
+            <div class="content">
+                <article>
+
+                    {% if settings.themes.NewFolderTypemill.pagelayout == "layoutcentered" %}
+
+                        <header>
+                            <h1>{{ title }}</h1>
+                        </header>
+
+                    {% endif %}
+                    
+                    {{ content }}
+                    
+                </article>
+
+            </div>
 
 {# This grabs the navigation loop used to create the directory navigation. #}
 
 {% include 'partials/homepageloop.twig' %}
 
 
-
+        </div>
+    </section>

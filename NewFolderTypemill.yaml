@@ -28,9 +28,9 @@ forms:
       
         headerimage:
           type: text
-          label: Default header image (centered layout only)
+          label: Default header image
           placeholder: /themes/NewFolderTypemill/images/folder-bg.webp
-          description: Change the default header image for the whole website. Upload your image to the server, and use a relative path. Only works for the centered layout.
+          description: Change the default header image for the whole website. Upload your image to the server, and use a relative path.
 
         headerimageblur:
           type: number
