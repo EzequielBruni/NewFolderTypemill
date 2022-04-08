@@ -127,6 +127,14 @@ sub {
 
   // All lists placed in a body of text (such as an article) must be wrapped in any element with the .content class. ie <article class="content">
 
+.content {
+    ul, ol {
+        li {
+            margin-bottom: .5rem;
+        }
+    }
+}
+
   // Nice, simple styling for unordered lists.
 
 .content ul {

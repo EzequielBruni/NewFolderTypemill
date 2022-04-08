@@ -11,8 +11,10 @@ code {
     padding: .3em;
 }
 
-    p code {
+    p code, li code {
         font-size: var(--small-text);
+        padding: .2em;
+        white-space: nowrap;
     }
 
 /* Preformatted Text and Code */
