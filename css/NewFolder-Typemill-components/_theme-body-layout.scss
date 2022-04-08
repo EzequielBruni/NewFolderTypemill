@@ -1,0 +1,80 @@
+/* Global Layout Styles */
+
+html, body {
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+// I've used this class a lot. It keeps the body of the content in line.
+
+div.pagewrap {
+    margin: auto;
+    max-width: 80ch;
+    padding: 4rem;
+    width: 100%;
+}
+
+    // Gotta make sure your pages never look to short
+
+    #pagecontent {
+        div.pagewrap {
+            min-height: 60vh;
+        }
+    }
+
+// Some minimal styling for custom content in the page footer
+
+#pagefooter {
+    div.pagewrap {
+        border-bottom: .3rem dashed var(--secondary-color);
+        margin-bottom: 2rem;
+        padding: 0rem 8rem;
+        text-align: left;
+    }
+}
+
+
+/* "Sidebar on the left" layout styles */
+
+/* Mobile and mobile-adjacent content will look the same
+    as before. Fancy layouts like these only really work on 
+    big-ish screens.  */
+
+@media screen and (min-width: 1050px) {
+
+    .layoutsideleft {
+        display: grid;
+        gap: 0px 0px; 
+        grid-template-columns: minmax(30ch, 25%) 1fr 1fr; 
+        grid-template-rows: min-content 1fr 1fr min-content; 
+
+        grid-template-areas: 
+        "Header Widgets Widgets"
+        "Header Body Body"
+        "Header Body Body"
+        "Header Footer Footer";
+
+        #pageheader {
+            grid-area: Header;
+            position: relative;
+        }
+
+        #widgets {
+            grid-area: Widgets;
+        }
+
+        #pagecontent {
+            grid-area: Body;
+
+            div.pagewrap {
+                min-height: 80vh;
+                padding-top: 2rem;
+            }
+        }
+
+        #pagefooter {
+            grid-area: Footer;
+        }
+    }
+
+}

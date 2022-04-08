@@ -1,0 +1,196 @@
+/* TYPOGRAPHY */
+
+/* FONT IMPORT */
+
+// I use Google Fonts & Fontify for simplicity's sake. I may embed fonts manually in the future, if I see too many performance problems.
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Rubik:ital,wght@0,400;0,700;1,400;1,700&family=Lato:wght@900&display=swap');
+
+/* FONT VARIABLES */
+
+  // Make easy font changes with variables.
+:root {
+    --body-font: 'Rubik', sans-serif;
+    --heading-font: 'Lato', sans-serif;
+    --monospace-font: 'IBM Plex Mono', monospace;
+    // Small text size
+    --small-text: 0.8em;
+}
+
+/* TYPE SCALING */
+
+// This setup allows typefaces to change size as you make the screen wider or smaller.
+
+:root {
+    font-size: clamp(16px, calc(1rem + ((1vw - 7.68px) * 0.3472)), 20px);
+    min-height: 0vw;
+}
+
+/* Base Styles */
+
+body {
+    font-family: var(--body-font);
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--text-color-1);
+}
+
+p {
+    margin-bottom: 1.15rem;
+}
+
+strong {
+    font-weight: 700;
+}
+
+em {
+    font-style: italic;
+}
+
+/* HEADINGS */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    font-weight: normal;
+    line-height: 1.15;
+    margin: 1.05rem 0 1.05rem;
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 2.488em;
+}
+
+h2 {
+    font-size: 2.074em;
+}
+
+h3 {
+    font-size: 1.728em;
+}
+
+h4 {
+    font-size: 1.44em;
+}
+
+h5 {
+    font-size: 1.2em;
+}
+
+small, .text_small {
+    font-size: var(--small-text);
+}
+
+/* GENERAL ALIGNMENTS */
+
+p,
+ul,
+ol,
+pre,
+table,
+blockquote {
+    margin-bottom: 1.5em;
+    margin-top: 0em;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+    margin-bottom: 0em;
+    margin-top: 0em;
+}
+
+hr,
+.hr {
+    border: 1px solid;
+    margin: -1px 0;
+}
+
+sub,
+sup {
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+
+/* LISTS */
+
+  // All lists placed in a body of text (such as an article) must be wrapped in any element with the .content class. ie <article class="content">
+
+  // Nice, simple styling for unordered lists.
+
+.content ul {
+    list-style: circle;
+    padding-left: 1.5em;
+
+        li {
+            p:last-child {
+                margin: 0 !important;
+            }
+    }
+}
+
+// More complex styling for ordered lists, so I can style the numbers however I like. Based on a snippet by Roger Johansson. - https://www.456bereastreet.com
+
+.content {
+
+    ol {
+        counter-reset:li; /* Initiate a counter */
+        margin-left:0; /* Remove the default left margin */
+        padding-left:0; /* Remove the default left padding */
+    }
+
+    ol > li {
+        list-style:none; /* Disable the normal item numbering */
+        margin:0 0 .5em 2em; /* Give each list item a left margin to make room for the numbers */
+        position:relative; /* Create a positioning context */
+
+        p:last-child {
+            margin: 0 !important;
+        }
+
+    }
+
+    ol > li:before {
+        /* Position and style the number */
+        background-color: var(--background-color-1);
+        content:counter(li); /* Use the counter as content */
+        counter-increment:li; /* Increment the counter by 1 */
+        font-family: var(--monospace-font);
+        font-weight:bold;
+        left:-2em;
+        padding: .15em; 
+        position:absolute;
+        text-align:center;
+        top:-2px;
+        width: 1.3em;
+    }
+
+    ol ol li:last-child {margin-bottom:0;}
+}
+
+/* LINKS */
+
+a {
+    color: var(--primary-color);
+
+    &:hover {
+        color: var(--link-hover);
+    }
+}
+
+/* SUP & SUB */
+
+sup, sub {
+    font-size: .7em;
+}

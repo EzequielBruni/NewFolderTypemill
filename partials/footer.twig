@@ -1,0 +1,22 @@
+{# This activates the custom footer text if you add some in the theme settings. #}
+
+{% if settings.themes.NewFolderTypemill.footercustomtext %}
+
+    <div class="pagewrap">
+
+        {{ markdown(settings.themes.NewFolderTypemill.footercustomtext) }}
+
+    </div>
+
+{% endif %}
+
+{# This puts in a default "Copyright mine" message. #}
+
+{% set nowYear = "now"|date("Y") %}
+{% if settings.year is empty or settings.year == nowYear %}
+    {% set copyrightYears = nowYear %}
+{% else %}
+    {% set copyrightYears = settings.year ~ ' - ' ~ nowYear %}
+{% endif %}
+
+	<p>{{ settings.copyright }} by {{ settings.author }}, {{ copyrightYears }}. All Rights Reserved.</p>

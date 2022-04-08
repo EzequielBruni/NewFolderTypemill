@@ -1,0 +1,61 @@
+{# This file has the extra styles and variables required to customize
+   the page header for the default (centered) layout. #}
+
+<style>
+
+    {# This will change the header/hero image if you upload one. #}
+
+    header#pageheader {
+        {% if metatabs.meta.heroimage != '' %}
+            background-image: url({{ base_url }}/{{ metatabs.meta.heroimage }});
+        {% else %}
+            background-image: url({{ base_url }}{{ settings.themes.NewFolderTypemill.headerimage }});
+        {% endif %}
+    }
+
+        {# This is what allows the user to change the blur and darkening effect
+           on the header image. #}
+
+        header#pageheader::before {
+            backdrop-filter: blur({{ settings.themes.NewFolderTypemill.headerimageblur }}px);
+            background-color: rgba(0,0,0,{{ settings.themes.NewFolderTypemill.headerimagedarken }});
+            content: " ";
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            z-index: 1;
+        }
+
+    header#pageheader h1, header#pageheader nav, header#pageheader div {
+        z-index: 99;
+    }
+
+    {# Firefox is being dumb and doesn't support `backdrop-filter.`
+    This is the incredibly silly workaround. That just won't 
+    look as good around the edges.#}
+
+    @supports not (backdrop-filter: blur(7px)) {
+        header#pageheader {
+            overflow: hidden;
+        }   
+
+        header#pageheader::before {
+            content: " ";
+
+            {% if metatabs.meta.heroimage != '' %}
+                background-image: url({{ base_url }}/{{ metatabs.meta.heroimage }});
+            {% else %}
+                background-image: url({{ base_url }}/themes/NewFolderTypemill/images/folder-bg.png);
+            {% endif %}
+            filter: blur({{ settings.themes.NewFolderTypemill.headerimageblur }}px);
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+    }
+
+</style>

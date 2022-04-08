@@ -1,0 +1,77 @@
+name: NewFolderTypemill
+version: 0.1
+description: NewFolder for Typemill is an adaptation of the NewFolder SCSS framework for, you guessed it, the Typemill CMS.
+author: Ezequiel Bruni
+homepage: https://newfolder.dev
+licence: MIT
+
+settings:
+  headerimage: /themes/NewFolderTypemill/images/folder-bg.webp
+  headerimageblur: 5
+  headerimagedarken: 0.5
+  pagelayout: layoutcentered
+
+forms:
+  fields:
+
+    pagelayout:
+      type: select
+      label: Choose your website layout
+      options:
+        layoutcentered: Centered
+        layoutsideleft: Sidebar on the left
+
+    customheader:
+      type: fieldset
+      legend: Customize your header image
+      fields:
+      
+        headerimage:
+          type: text
+          label: Default header image (centered layout only)
+          placeholder: /themes/NewFolderTypemill/images/folder-bg.webp
+          description: Change the default header image for the whole website. Upload your image to the server, and use a relative path. Only works for the centered layout.
+
+        headerimageblur:
+          type: number
+          label: Blur the header image
+          placeholder: 5
+          description: Blur the header image. A higher number means the image gets blurrier. This will apply to all pages.
+        
+        headerimagedarken:
+          type: text
+          label: Darken the header image
+          placeholder: 5
+          description: If you need more contrast for your text, you can darken the header image. Works on a scale of 0.0 (no darkening) to 1.0 (too dark to see any image). This will apply to all pages.
+
+    customslogan:
+      type: fieldset
+      legend: Customize your website slogan
+      fields:
+
+        slogan:
+          type: text
+          label: Header slogan
+          description: Put a slogan in your page header here.
+
+        sloganhome:
+          type: checkbox
+          label: Home Page slogan
+          checkboxlabel: Show your slogan on the home page
+
+        slogannothome:
+          type: checkbox
+          label: Slogan on non-home pages
+          checkboxlabel: Show your slogan on the rest of your website.
+
+    customfooter:
+      type: fieldset
+      legend: Customize the footer area
+      fields:
+
+        footercustomtext:
+          type: textarea
+          label: Custom footer text
+          description: Add custom text to your footer. Links and other formatting options are supported with Markdown.
+
+

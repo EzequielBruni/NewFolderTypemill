@@ -1,0 +1,52 @@
+
+/* GLOBAL COLOR VARIABLES */
+:root {
+
+    --background-color-1: rgb(238, 229, 247);
+    --background-color-2: rgb(56, 46, 72);
+    --link-hover: rgb(243, 9, 79);
+    --mildwarning-color: rgb(255, 81, 0);
+    --primary-color: rgb(194, 75, 120);
+    --secondary-color: rgb(141, 23, 78);
+    --success-color: rgb(18, 194, 62);
+    --tertiary-color: rgb(202, 188, 219);
+    --text-color-1: rgb(57, 46, 72);
+    --text-color-2: rgb(255,255,255);
+    --warning-color: rgba(255, 0, 0, 1);
+}
+
+    // The colors for dark-mode users
+    @media (prefers-color-scheme: dark) {
+        :root {
+
+            --background-color-1: rgb(42, 37, 51);
+            --background-color-2: rgb(57, 46, 72);
+            --body-background-dark: rgb(17, 15, 19);
+            --link-hover: rgb(243, 9, 79);
+            --mildwarning-color: rgb(255, 81, 0);
+            --primary-color: rgb(194, 75, 120);
+            --secondary-color: rgb(192, 47, 115);
+            --success-color: rgb(18, 194, 62);
+            --tertiary-color: rgb(84, 76, 94);
+            --text-color-1: rgb(255,255,255);
+            --text-color-2: rgb(238, 235, 245);
+            --warning-color: rgb(255, 45, 45);
+        }
+
+        body {
+            background: var(--body-background-dark);
+        }
+
+    }
+
+// Selection colors
+
+::-moz-selection { /* Code for Firefox */
+    background: var(--secondary-color);
+    color: var(--text-color-2);
+}
+
+::selection {
+    background: var(--secondary-color);
+    color: var(--text-color-2);
+}

@@ -1,0 +1,95 @@
+/* NAVIGATION PATTERNS */
+
+// The Simple Navigation Bar
+
+nav {
+
+    li {
+
+        transition: all .4s ease;
+
+        a {
+            text-decoration: none;
+            transition: all .4s ease;
+        }
+    }
+}
+
+
+// Breadcrumb Navigation
+
+nav.breadcrumb {
+    border-left: none;
+    border-right: none;
+    border: .1rem dashed var(--background-color-2);
+    margin-bottom: 1em;
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: .9em;
+        margin: 0px;
+
+        li {
+
+            a {
+                font-family: var(--monospace-font);
+                padding: 0rem .5rem 0rem .5rem;
+            
+                &:after {
+                content: " ▶";
+                }
+
+                &:hover {
+                    color: var(--tertiary-color);
+                }
+            }
+
+            &:last-child {
+                a:after {
+                    content: "";
+                }
+            }
+        }
+    }
+}
+
+
+// Accordion Navigation
+
+// Drop-down and hamburger menus on steroids
+
+nav.accordion {
+    transition: all .5s ease;
+
+    input[type=checkbox] {
+        display: none;
+    }
+
+    label {
+        border-top: 2px dashed var(--background-color-2);
+        cursor: pointer;
+        display: block;
+        padding: .3rem .5rem .3rem .5rem;
+
+        &:after {
+            content: " ▼";
+        }
+    }
+
+    > ul {
+        display: none;
+    }
+    
+    input:checked + ul {display: block;}
+
+    ul {
+        li {
+            a {
+                border-top: 1px dashed var(--secondary-color);
+                display: block;
+                padding: .3rem .5rem .3rem .5rem;
+            }
+        }
+    }
+}

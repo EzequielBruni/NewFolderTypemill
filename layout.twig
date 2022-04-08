@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="{{ settings.langattr | default('en') }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="{{ metatabs.meta.description }}" />
+    <meta name="author" content="{{ metatabs.meta.author }}" />
+    <meta name="generator" content="TYPEMILL" />
+    <link rel="canonical" href="{{ item.urlAbs }}" />
+
+    <!-- Render all other meta-tags from the system and from plugins -->
+
+    {{ assets.renderMeta() }}
+
+    {% block stylesheets %}
+
+       <link rel="stylesheet" href="{{ base_url }}/themes/NewFolderTypemill/css/style.css" />
+
+        {% if settings.themes.NewFolderTypemill.pagelayout == "layoutcentered" %}
+
+            {% include 'partials/layoutcentered-styles.twig' %}
+
+        {% elseif settings.themes.NewFolderTypemill.pagelayout == "layoutsideleft" %}
+
+            {% include 'partials/layoutsideleft-styles.twig' %}
+
+        {% endif %}
+
+       {{ assets.renderCSS() }}
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+{# This loads the navigation menu for every page except the home page. #}
+{% if home %}
+<nav id="pagenav" class="homepagenav">
+    <a href="#directory">Menu</a>
+</nav>
+{% else %}
+<nav id="pagenav" class="accordion">
+    <label for="nav-accordion">Menu</label>
+    <input type="checkbox" id="nav-accordion"/>
+    {% include 'partials/navigation.twig' %}
+</nav>
+{% endif %}
+
+{# This changes the website layout if you change the appropriate setting in Typemill. #}
+{% if settings.themes.NewFolderTypemill.pagelayout == "layoutsideleft" %}
+<div class="layoutsideleft">
+{% endif %}
+
+{# Gotta load the page header. #}
+{% include 'partials/header.twig' %}
+
+
+{# If you activate a "widget" like the search plugin, it'll show up here. #}
+{% if widgets %}
+    <aside id="widgets">
+        <div class="pagewrap">
+            {% for index,widget in widgets %}
+            <div id="{{ index }}">
+                {{ widget }}
+            </div>
+            {% endfor %}
+        </div>
+    </aside>
+{% endif %}
+
+    {# The main page content. #}
+    <section id="pagecontent">
+        <div class="pagewrap">
+            {% block content %}{% endblock %}
+        </div>
+    </section>
+
+
+    {# The page footer. #}
+    <footer id="pagefooter">
+        
+        {% include 'partials/footer.twig' %}
+    
+    </footer>
+
+{# This just makes sure the div we opened above gets closed when
+   using the "Sidebar on left" layout. #}
+{% if settings.themes.NewFolderTypemill.pagelayout == "layoutsideleft" %}
+</div">
+{% endif %}
+
+    {# This loads in any JS you want. #}
+    {% block javascripts %}
+
+        {# This is essential for things like the built-in video player. #}
+        <script src="{{ base_url }}/system/author/js/typemillutils.js"></script>
+        <script>typemillUtilities.start();</script>
+
+        {# This file is empty, and is simply here as an example. #}
+        {# <script src="{{ base_url }}/themes/dev/js/script.js"></script> #}
+
+        {# This JavaScript provided by plugins, if I'm not mistaken. #}
+        {{ assets.renderJS() }}
+    
+    {% endblock %}
+
+</body>
+</html>

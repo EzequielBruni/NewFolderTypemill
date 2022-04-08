@@ -1,0 +1,21 @@
+{# Some very simple markup for the home page. #}
+
+<div class="content">
+    <article>
+
+        <header>
+            <h1>{{ title }}</h1>
+        </header>
+        
+        {{ content }}
+        
+    </article>
+
+</div>
+
+{# This grabs the navigation loop used to create the directory navigation. #}
+
+{% include 'partials/homepageloop.twig' %}
+
+
+

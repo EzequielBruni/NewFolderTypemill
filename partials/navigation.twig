@@ -1,0 +1,38 @@
+{# The default page navigation for every page except the home page. 
+   A fairly standard macro navigation loop on the whole. #}
+
+{% macro loop_over(navigation) %}
+
+    {% import _self as macros %}
+
+    {% for element in navigation %}
+	
+		{% set depth = element.keyPathArray|length %}
+		
+        {% if element.activeParent %}
+			<li class="{{ element.elementType }} level-{{ depth }} active parent">
+		    {% elseif element.active %}
+			<li class="{{ element.elementType }} level-{{ depth }} active">
+		    {% else %}
+			<li class="{{ element.elementType }} level-{{ depth }}">
+		{% endif %}
+        {% if (element.elementType == 'folder') %}
+				<a href="{{ element.urlAbs }}">{{ element.name }}</a>
+
+                {% if (element.folderContent|length > 0) and (element.contains == 'pages') %}	
+                    <ul>
+                        {{ macros.loop_over(element.folderContent) }}
+                    </ul>
+                {% endif %}
+            {% else %}
+				<a href="{{ element.urlAbs }}">{{ element.name }}</a>
+        {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}
+
+{% import _self as macros %}
+
+<ul class="toplevel">
+    {{ macros.loop_over(navigation) }}
+</ul>

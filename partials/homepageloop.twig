@@ -1,0 +1,42 @@
+{# This is the navigation look for the directory on the home page.
+   Mostly it's just a standard navigation loop that I messed with.
+   My messing around was only partially successful. #}
+
+{% macro loop_over(navigation) %}
+
+{% import _self as macros %}
+
+{% for item in navigation %}
+    <li class="toplevel">
+    {% if (item.elementType == 'folder') %}
+    
+        <h2><a href="{{ item.urlAbs }}">{{ item.name }}</a></h2>
+
+        {% set pagelist = getPageList(navigation, item.urlRel, base_url) %}
+
+        {% if pagelist.contains == "pages" %}
+        <ul>
+            {% for element in pagelist.folderContent %}
+
+                {% set page = getPageMeta(settings, element) %}
+                <li>
+                        <h3><a href="{{ element.urlAbs }}">{{ element.name }}</a></h3>
+                </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    
+    {% else %}
+        <h2 class="singlepage"><a href="{{ item.urlAbs }}">{{ item.name }}</a></h2>
+    {% endif %}
+    </li>
+{% endfor %}
+{% endmacro %}
+
+{% import _self as macros %}
+
+<nav id="directory">
+    <ul>
+        {{ macros.loop_over(navigation) }}
+    </ul>
+</nav>

@@ -1,0 +1,42 @@
+{# The basic page header markup #}
+
+    {# This adds the .homehero class, making the home page hero section a bit bigger. #}
+    {% if home and metatabs.meta.heroimage != '' %}
+
+    <header id="pageheader" class="homehero">
+
+    {% else %}
+
+    <header id="pageheader">
+
+    {% endif %}
+
+        <div class="pagewrap">
+
+            <h1>
+                <a href="{{ base_url }}" title="My Title">
+                    {# This adds the header image if there is one. #}
+                    {% if logo %}
+                        <img src="{{ base_url }}/{{ logo }}" class="logo-image"/>
+                    {% else %}
+                        {{ settings.title }}
+                    {% endif %}
+                </a>
+            </h1>
+
+            {# This adds the slogan text, if set and enabled. #}
+            {% if home and settings.themes.NewFolderTypemill.slogan is not empty and settings.themes.NewFolderTypemill.sloganhome %}
+
+                <p class="small">{{ settings.themes.NewFolderTypemill.slogan }}</p>
+
+            {% elseif not home and settings.themes.NewFolderTypemill.slogan is not empty and settings.themes.NewFolderTypemill.slogannothome %}
+                
+                <p class="small">{{ settings.themes.NewFolderTypemill.slogan }}</p>
+            
+            {% else %}
+            <!-- Your slogan is empty or turned off for this page. -->
+            {% endif %}
+
+        </div>
+            
+    </header>

@@ -1,0 +1,14 @@
+{# This file enables breadcrumb navigation, and can mostly be left alone. #}
+
+<nav class="breadcrumb">   
+    <ul>
+        <li><a class="highlight" href="{{ base_url }}">{{ settings.title|title }}</a></li>
+        {% for crumb in breadcrumb %}
+            {% if loop.last %}
+            <li><span>{{ crumb.name|title }}</span></li>
+            {% else %}
+            <li><a class="highlight" href="{{ crumb.urlRel }}">{{ crumb.name|title }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</nav>

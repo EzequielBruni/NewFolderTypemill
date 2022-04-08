@@ -1,0 +1,180 @@
+/* This files integrates styles for several common
+   Typemill plugins, and the search plugin that I modified. */
+
+// This section is for the Newfolder Search plugin.
+
+form.searchContainer{
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    margin-bottom: 0;
+
+    label {
+        display: none;
+    }
+
+    input[type=text] {
+        width: 100%;
+        margin-top: 0;
+        border-radius: .3rem 0rem 0rem .3rem;
+        border-right: 0px;
+    
+        &:focus {
+            border-color: var(--primary-color);
+            border-radius: .3rem 0rem 0rem .3rem;
+            outline: var(--primary-color);
+            border-right: 0px;
+        }
+    }
+
+    button{
+        display: inline;
+        text-indent: -9999em;
+        width: 3em;
+        height: 2em;
+        border-radius: 0rem .3rem .3rem 0rem;
+        @include icon-search-eye-darkmode;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 1.5em 1.5em;
+        }
+
+    button:hover, button:focus, button:active{
+        cursor: pointer;
+    }
+}
+
+div.resultwrapper {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    position: relative;
+    background: var(--background-color-1);
+
+    h2 {
+        margin-right: 30%;
+        margin-top: -0.5rem;
+    }
+
+    ul {
+
+        li {
+            font-size: var(--small-text);
+            padding-bottom: 1rem;
+            border-bottom: .1rem dashed white;
+
+            &:last-child {
+                padding-bottom: 0px;
+                border-bottom: 0px;
+            }
+        }
+    }
+}
+
+button#closeSearchResult{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    z-index: 999;
+
+    &:hover, &:focus {
+        cursor: pointer;
+    }
+}
+
+.content ul.resultlist {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.lunr-hl{
+    background-color: yellow;
+}
+
+    @media (prefers-color-scheme: dark) {
+        .lunr-hl{
+            background-color: var(--tertiary-color);
+        }
+    }
+
+
+// This section is for the Contact Form plugin.
+
+div.mailresult {
+    @extend .alert;
+    @extend .alert.generalinfo;
+}
+
+@media screen and (min-width: 80ch) {
+    .content .tm-contactform {
+
+        form fieldset.card {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 1rem;
+
+            .cardField:nth-child(1) {
+                grid-column: 1 / span 2;
+            }
+
+            .cardField:nth-child(2) {
+                grid-column: 3 / span 2;
+            }
+
+            .cardField:nth-child(3), .cardField:nth-child(4) {
+                grid-column: 1 / span 4;
+            }
+
+            .cardField:nth-child(5) {
+                grid-column: 1 / span 3;
+                border-bottom: .3rem dashed var(--tertiary-color);
+                font-size: var(--small-text);
+            }
+
+            .formElement {
+                grid-column: 1 / span 4;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                gap: 1rem;
+                row-gap: 0rem;
+
+                align-items: center;
+
+                label {
+                    grid-column: 1 / span 4;
+                }
+
+                input {
+                    grid-column: 1 / span 2;
+                }
+
+                img.captcha {
+                    grid-column: 3 / span 2;
+                    margin-top: 1em;
+                }
+            }
+        }
+    }
+
+}
+
+// This section is for the code copy plugin.
+
+.content pre {
+    position: relative;
+
+    button.btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-radius: 0;
+    }
+}
+
+// This section is for the code Highlight plugin.
+
+.content pre code.hljs table {
+    margin-bottom: 0;
+}

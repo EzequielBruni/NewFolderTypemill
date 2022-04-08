@@ -1,0 +1,214 @@
+/* Page navigation that is shown on every page except the home page. */
+
+nav#pagenav {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+
+    > label {
+        background-color: var(--background-color-2);
+        color: var(--text-color-2);
+        text-align: center;
+        width: 100%;
+    }
+
+    // Styles for the top levels of navigation
+
+    ul.toplevel { 
+        background-color: rgba(255,255,255,0.9);
+        height: calc(100vh - 2rem);
+        margin-bottom: 0;
+        overflow-y: scroll;  
+        padding-bottom: 2rem;
+        position: absolute;
+        width: 100%;
+
+        li {
+            margin: 0 auto;
+            max-width: 80ch;
+            padding-bottom: 0rem;
+            padding: 2rem 4rem;
+
+            a {
+                font-family: var(--monospace-font);
+                font-size: 2em;
+            }
+
+            // Styles for the sub-folders and files
+
+            ul {
+                li {
+
+                    padding-top: 1.5rem;
+
+                    a {
+                        font-family: var(--body-font);
+                        font-size: 1.5em;
+                    }
+
+                    ul li {
+
+                        padding-bottom: 1rem;
+                    
+                        a {
+                            font-size: 1em;
+                            padding-top: .75rem;
+                        }
+
+                    }
+                }
+            }
+        }
+
+        /* We want the navigation menu to scroll, but that
+           doesn't mean we want to see the scrollbar. */
+
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    /* A simple link that takes people down to the directory menu 
+       on the home page. */
+
+    &.homepagenav {
+            a {
+                padding: .3rem .5rem .3rem .5rem;
+                display: block;
+                cursor: pointer;
+                text-decoration: none;
+                text-align: center;
+                background-color: var(--background-color-2);
+                color: var(--text-color-2);
+
+                &:after {
+                content: " ▼";
+            }
+        }
+    }
+}
+
+    /* Some extra styling to blur everything behind 
+       the main navigation for legibility. */
+
+    @supports (backdrop-filter: blur(7px)) {
+        nav#pagenav {
+            ul.toplevel {
+                backdrop-filter: blur(7px);
+            }
+        }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        nav#pagenav {
+            ul.toplevel {
+                background-color: rgba(0,0,0,0.9);
+            }
+        }
+
+        @doesn
+    }
+
+/* Styles for the directory/navigation on the home page.
+   Follows pretty much the same pattern (structurally 
+   speaking) as the main page navgation. 
+   It's just fancier. */
+
+nav#directory {
+
+    ul {
+        li {
+
+            &.toplevel {
+                border-top: .3rem dashed var(--tertiary-color);
+            }
+
+            a {
+                display: block;
+            }
+
+            ul {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+                padding-bottom: 1rem;
+
+                li {
+                    background: linear-gradient(90deg, var(--background-color-1) 50%, var(--background-color-1) 50%);
+                    background-size: 4rem 100%;
+                    background-repeat: no-repeat;
+                    border-right: .1rem solid var(--tertiary-color);
+
+                    &:hover {
+                        border-right: .2rem solid var(--primary-color);
+                        background-size: 50% 100%;
+                    }
+
+                    a {
+                        padding: .5rem;
+                    }
+
+                }
+            }
+        }
+    }
+
+    h2 {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        a {
+            &::before {
+                content: "> ";
+            }
+        }
+
+        
+    }
+
+    h2.singlepage {
+        
+        background: linear-gradient(90deg, var(--background-color-1) 50%, var(--background-color-1) 50%);
+        background-size: 4rem 100%;
+        background-repeat: no-repeat;
+        background-position: right;
+        border-right: .1rem solid var(--tertiary-color);
+        transition: all .4s ease;
+
+        &:hover {
+            background-size: 50% 100%;
+        }
+    }
+
+}
+
+/* Styles for the folder page navigation */
+
+nav.folder {
+    border-top: .3rem solid var(--background-color-2);
+    padding-top: 1rem;
+
+    ul {
+
+        li {
+            padding-top: .5rem;
+            padding-bottom: .5rem;
+            background: linear-gradient(90deg, var(--background-color-1) 50%, var(--background-color-1) 50%);
+            background-size: 25% 100%;
+            background-repeat: no-repeat;
+            margin-bottom: 1em;
+
+            &:hover {
+                background-size: 50% 100%;
+            }
+
+            a {
+                display: block;
+                padding-left: 20%;
+            }
+        }
+    }
+}

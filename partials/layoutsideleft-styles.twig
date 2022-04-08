@@ -1,0 +1,90 @@
+{# This file has the extra styles and variables required to customize
+   the page header for the "Sidebar on the left" layout. #}
+
+<style>
+
+    {# Styles to darken the header/sidebar section by default #}
+
+    #pageheader {
+        position: relative;
+    }
+
+    #pageheader div.pagewrap {
+            z-index: 999;
+    }
+
+    #pageheader::before {
+        content: " ";
+        background-color: rgba(0,0,0,{{ settings.themes.NewFolderTypemill.headerimagedarken }});
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+
+
+    {% if metatabs.meta.heroimage != '' %}
+    {# Styles for the hero images #}
+    #pagecontent article header {
+        background-image: url({{ base_url }}/{{ metatabs.meta.heroimage }});
+        position: relative;
+        background-size: cover;
+        height: 20rem;
+        margin-bottom: 2rem;
+        margin-left: -3rem;
+        margin-right: -3rem;
+    }
+
+    
+    #pagecontent article header::before {
+        content: " ";
+        backdrop-filter: blur({{ settings.themes.NewFolderTypemill.headerimageblur }}px);
+        background-color: rgba(0,0,0,{{ settings.themes.NewFolderTypemill.headerimagedarken }});
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    #pagecontent article header h1 {
+        color: var(--text-color-2);
+        z-index: 999;
+        position: absolute;
+        width: calc(100% - 6rem);
+        bottom: 0rem;
+        left: 3rem;
+    }
+
+
+    {# Firefox is being dumb and doesn't support `backdrop-filter.`
+    This is the incredibly silly workaround. That just won't 
+    look as good around the edges.#}
+
+    @supports not (backdrop-filter: blur(7px)) {
+        #pagecontent article header {
+            overflow: hidden;
+        }
+
+        #pagecontent article header::before {
+            content: " ";
+
+            {% if metatabs.meta.heroimage != '' %}
+                background-image: url({{ base_url }}/{{ metatabs.meta.heroimage }});
+            {% else %}
+                background-image: url({{ base_url }}/themes/NewFolderTypemill/images/folder-bg.png);
+            {% endif %}
+            filter: blur({{ settings.themes.NewFolderTypemill.headerimageblur }}px);
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+    }
+
+    {% endif %}
+</style>
+

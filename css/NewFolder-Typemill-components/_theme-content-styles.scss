@@ -1,0 +1,81 @@
+/* This file integrates some of NewFolder's default
+   helper classes and mixins into the Typemill theme, 
+   and implements some Typemill-specific components.
+   You mostly shouldn't need to touch these styles. */
+
+// Float helper classes
+
+.left {
+    @extend .float-left;
+    @extend .float-hard;
+}
+
+.center {
+    text-align: center;
+
+    img {
+        border: none;
+    }
+}
+
+.right {
+    @extend .float-right;
+    @extend .float-hard;
+}
+
+// Alert/notice/admonition styling
+
+
+.notice2 {
+    @extend .alert;
+    @extend .alert.mild;
+}
+
+.notice1 {
+    @extend .alert;
+    @extend .alert.warning;
+} 
+
+.notice3 {
+    @extend .alert;
+    @extend .alert.generalinfo;
+}
+
+.notice4 {
+    @extend .alert;
+    @extend .alert.success;
+}
+
+
+// Video player styles
+
+figure.video-container {
+    min-width: 100%;
+    position: relative;
+    aspect-ratio: 16 / 9;
+
+    img {
+        min-width: 100%;
+    }
+
+    button.play-video {
+        position: absolute;
+        height: 3rem;
+        width: 5rem;
+        top: 50%;
+        left: 50%;
+        margin-left: -2.5rem;
+        margin-top: -1.5rem;
+        box-shadow: 0px 3px 3px rgba(0,0,0,0.3);
+
+        @include icon-play-button-darkmode;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 2rem 2rem;
+    }
+
+    iframe {
+        width: 100% !important;
+        height: 100% !important;
+    }
+}

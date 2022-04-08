@@ -1,0 +1,32 @@
+{# The markup for folder-style pages. #}
+
+{% include 'partials/breadcrumb.twig' %}
+
+<article>
+
+	<header>
+        <h1>{{ title }}</h1>
+    </header>
+		
+	{{ content }}
+
+</article>
+
+<nav class="folder">
+
+    <ul>
+
+        {# A dead-simple loop that grabs the subpages. #}
+
+        {% for article in item.folderContent %}
+            {% set page = getPageMeta(settings, article) %}
+            <li>
+                <a href="{{ article.urlAbs }}">
+                    <h2>{{ article.name }}</h2>
+                    <p>{{ page.meta.description|slice(0,150) }}...</p>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+</nav>

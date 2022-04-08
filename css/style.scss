@@ -1,0 +1,23 @@
+/* Import styles from NewFolder */
+
+// Essential styles
+@import "NewFolder/_reset.scss";
+@import "NewFolder/_colors.scss"; // << Edit this file to change both light and dark color schemes.
+@import "NewFolder/_type.scss"; // << Edit this file to change your default font families.
+@import "NewFolder/_helper-classes.scss";
+
+// Component styles (Also essential for our purposes in this Typemill theme)
+@import "NewFolder/_mixins.scss";
+@import "NewFolder/_content-components.scss";
+@import "NewFolder/_navigation.scss";
+@import "NewFolder/_forms.scss";
+
+/* Import styles for Typemill-specific layouts and components */
+
+@import "NewFolder-Typemill-components/_theme-body-layout.scss";
+@import "NewFolder-Typemill-components/_theme-header-layout.scss";
+@import "NewFolder-Typemill-components/_theme-footer-layout.scss";
+@import "NewFolder-Typemill-components/_theme-navigation.scss";
+@import "NewFolder-Typemill-components/_theme-widgets-bar.scss";
+@import "NewFolder-Typemill-components/_theme-content-styles.scss";
+@import "NewFolder-Typemill-components/_theme-plugins.scss"; // << This file is only necessary if you have the Newfolder Search plugin installed.

@@ -1,0 +1,23 @@
+{# This just... makes a lot of stuff run. Don't touch. #}
+
+{% extends '/layout.twig' %}
+
+{% block title %}{{ metatabs.meta.title }} | {{ settings.title }}{% endblock %}
+
+{% block content %}
+
+	{% if home %}
+
+		{% include 'home.twig' %}
+
+	{% elseif item.elementType == 'folder' %}
+		
+		{% include 'folder.twig' %}
+
+	{% elseif item.elementType == 'file' %}
+		
+		{% include 'file.twig' %}
+	
+	{% endif %}
+	
+{% endblock %}

@@ -1,0 +1,235 @@
+
+
+/* Code Snippets */
+
+code {
+    background: var(--background-color-1);
+    border: 1px solid var(--tertiary-color);
+    box-shadow: inset 0px 0px .2em 0px rgba(0,0,0,0.3);
+    font-family: var(--monospace-font);
+    font-size: .9em;
+    padding: .3em;
+}
+
+    p code {
+        font-size: var(--small-text);
+    }
+
+/* Preformatted Text and Code */
+
+pre {
+    background: var(--background-color-2);
+    box-shadow: inset 0px 0px .5em 0px rgba(0,0,0,0.75);
+    color: var(--text-color-2);
+    font-size: .9rem;
+    padding: 1rem;
+
+    code {
+            background: transparent;
+            border: 0px;
+            box-shadow: none;
+            display: block;
+            white-space: pre-wrap;
+    }
+}
+
+/* Description lists */
+
+dl {
+  
+
+    dt {
+        border-left: .3rem solid var(--tertiary-color); 
+        font-weight: bold;
+        padding-left: .5rem;
+    }
+
+    dd {
+        border-left: .3rem solid var(--tertiary-color); 
+        font-family: var(--monospace-font);
+        font-size: var(--small-text);
+        margin-bottom: .5em;
+        padding-left: 2em;
+    }
+}
+
+/* BLOCKQUOTE */
+
+blockquote {
+    font-family: var(--monospace-font);
+    font-size: 1.1em;
+    margin-left: 3em;
+
+        p {
+            margin: 0px;
+
+            &::before {
+                content: "“ ";
+            }
+
+            &:last-of-type:after {
+                content: " ”";
+                text-align: right;
+            }
+        }
+    }
+
+/* IMAGES */
+
+img {
+    max-width: 100%;
+}
+
+.content img {
+    border-left: .5em solid var(--tertiary-color);
+    padding-left: .25em;
+}
+
+// Focused Images are designed to make pictures stand out a little more
+
+    @media (min-width: 1100px) {
+
+    div.img-focused, img.img-focused, .img-focused {
+        margin-left: -3rem;
+        width: calc(100% + 6rem);
+    }
+
+    }
+
+
+// Captioned Images
+
+.content figure {
+    font-family: var(--monospace-font);
+    padding-bottom: .5em;
+
+    figcaption {
+        font-size: .9em;
+        padding: 0 .5rem 0rem .75rem;
+    }
+}
+
+
+// Tables 
+
+table {
+    width: 100%;
+
+    tr {
+        width: 100%;
+    }
+
+    th, td {
+        padding: .3rem .5rem;
+    }
+
+    th {
+        background: var(--background-color-1);
+        font-weight: bold;
+        text-align: left;
+    }
+
+    td {
+        font-family: var(--monospace-font);
+        font-size: var(--small-text);
+    }
+}
+
+
+/* ALERT BOXES */
+
+// Some general styles for alert boxes.
+
+.alert {
+    background-color: var(--background-color-1);
+    background-position: -1rem -1rem;
+    background-repeat: no-repeat;
+    background-size: 5rem;
+    border-left: .3rem solid var(--tertiary-color);
+    margin-bottom: .5em;
+    padding: 1rem 1rem 1rem 2.5rem;
+    
+
+    h2, h3, h4, h5, p {
+        margin: 0;
+    }
+
+    p {
+        font-size: .9em;
+    }
+
+    a:hover {
+        color: var(--background-color-2);
+    }
+
+    code {
+        background: var(--background-color-2);
+        color: var(--text-color-2);
+    }
+}
+    @supports (background-blend-mode: overlay) {
+
+        .alert {
+            background-blend-mode: overlay;
+        }
+
+    }
+
+
+    .alert.warning {
+        border-color: var(--warning-color);
+        @include icon-warning-filled;
+
+        h3, h4, h5 {
+            color: var(--warning-color);
+        }
+    } 
+
+
+    .alert.mild {
+        border-color: var(--mildwarning-color);
+        @include icon-warning-outline;
+
+            h3, h4, h5 {
+            color: var(--mildwarning-color);
+            }
+    }
+
+    .alert.generalinfo {
+        border-color: var(--tertiary-color);
+        @include icon-search-eye;
+
+            h3, h4, h5 {
+            color: var(--text-color-1);
+            }
+    }
+
+    .alert.success {
+        border-color: var(--success-color);
+        @include icon-checkmark-filled;
+
+        h3, h4, h5 {
+        color: var(--success-color);
+        }
+    }
+
+
+    @media (prefers-color-scheme: dark) {
+        
+            .alert.generalinfo {
+                @include icon-search-eye-darkmode;
+            }
+            
+            .alert.mild {
+                @include icon-warning-outline-darkmode;
+            }
+            
+            .alert.success {
+                @include icon-checkmark-filled-darkmode;
+            }
+            
+            .alert.warning {
+                @include icon-warning-filled-darkmode;
+            } 
+        
+    }
