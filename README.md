@@ -5,7 +5,7 @@ A Typemill theme based on the NewFolder framework. If you're not sure what any o
 
 It's meant to be minimalist, easy to read, and easy to drop in to new projects. Customize your colors and fonts, compile the SCSS files, then go. You can find the documentation for this framework (and this Typemill) on [newfolder.dev](https://newfolder.dev).
 
-## Typemill is a prety awesome little CMS
+## Typemill is a pretty awesome little CMS
 
 [Typemill](https://typemill.net) is a flat-file CMS designed to let you easily create small knowledge base, documentation, and wiki-style websites, as well as generate ebooks from your website content. Since NewFolder as a framework was designed for text-heavy sites in the same vein, this seemed like a match made in heaven to me.
 
