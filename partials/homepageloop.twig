@@ -2,7 +2,7 @@
    Mostly it's just a standard navigation loop that I messed with.
    My messing around was only partially successful. #}
 
-{% macro loop_over(navigation) %}
+{% macro loop_over(navigation, settings) %}
 
 {% import _self as macros %}
 
@@ -37,6 +37,6 @@
 
 <nav id="directory">
     <ul>
-        {{ macros.loop_over(navigation) }}
+        {{ macros.loop_over(navigation, settings) }}
     </ul>
 </nav>
