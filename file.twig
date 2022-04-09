@@ -34,8 +34,14 @@
             </div>
 
             <nav class="prevnext">
-                <a href="{{ item.prevItem.urlRel }}">{{ item.prevItem.name }}</a>
-                <a href="{{ item.nextItem.urlRel }}">{{ item.nextItem.name }}</a>
+                
+                {% if item.prevItem.elementType == 'file' %}
+                    <a href="{{ item.prevItem.urlRel }}" class="previtem">{{ item.prevItem.name }}</a>
+                {% endif %}
+
+                {% if item.nextItem.elementType == 'file' %}
+                    <a href="{{ item.nextItem.urlRel }}" class="nextitem">{{ item.nextItem.name }}</a>
+                {% endif %}
             </nav>
 
         </div>

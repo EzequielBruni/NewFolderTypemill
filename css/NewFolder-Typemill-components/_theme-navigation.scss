@@ -228,7 +228,7 @@ nav.prevnext {
         font-family: var(--monospace-font);
         text-decoration: none;
 
-        &:nth-child(1) {
+        &.previtem {
             grid-column: 1;
 
             &::before {
@@ -236,7 +236,7 @@ nav.prevnext {
             }
         }
 
-        &:nth-child(2) {
+        &.nextitem {
             grid-column: 2;
             text-align: right;
 
