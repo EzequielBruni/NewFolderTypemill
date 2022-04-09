@@ -103,8 +103,7 @@ button#closeSearchResult{
 // This section is for the Contact Form plugin.
 
 div.mailresult {
-    @extend .alert;
-    @extend .alert.generalinfo;
+    @extend .alert, .generalinfo;
 }
 
 @media screen and (min-width: 80ch) {

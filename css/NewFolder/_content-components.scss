@@ -38,19 +38,21 @@ pre {
 /* Description lists */
 
 dl {
-  
-
     dt {
+        margin-top: .5em;
         border-left: .3rem solid var(--tertiary-color); 
         font-weight: bold;
         padding-left: .5rem;
+
+        &:first-child {
+            margin-top: 0rem;
+        }
     }
 
     dd {
         border-left: .3rem solid var(--tertiary-color); 
         font-family: var(--monospace-font);
         font-size: var(--small-text);
-        margin-bottom: .5em;
         padding-left: 2em;
     }
 }

@@ -27,23 +27,19 @@
 
 
 .notice2 {
-    @extend .alert;
-    @extend .alert.mild;
+    @extend .alert, .mild;
 }
 
 .notice1 {
-    @extend .alert;
-    @extend .alert.warning;
+    @extend .alert, .warning;
 } 
 
 .notice3 {
-    @extend .alert;
-    @extend .alert.generalinfo;
+    @extend .alert, .generalinfo;
 }
 
 .notice4 {
-    @extend .alert;
-    @extend .alert.success;
+    @extend .alert, .success;
 }
 
 
