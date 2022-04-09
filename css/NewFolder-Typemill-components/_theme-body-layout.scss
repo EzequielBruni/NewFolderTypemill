@@ -7,11 +7,19 @@ html, body {
 
 // I've used this class a lot. It keeps the body of the content in line.
 
+
 div.pagewrap {
     margin: auto;
     max-width: 80ch;
-    padding: 4rem;
+    padding: 2rem;
     width: 100%;
+}
+
+
+@media screen and (min-width: 1100px) {
+    div.pagewrap {
+        padding: 4rem;
+    }
 }
 
     // Gotta make sure your pages never look to short
@@ -23,15 +31,6 @@ div.pagewrap {
     }
 
 // Some minimal styling for custom content in the page footer
-
-#pagefooter {
-    div.pagewrap {
-        border-bottom: .3rem dashed var(--secondary-color);
-        margin-bottom: 2rem;
-        padding: 0rem 8rem;
-        text-align: left;
-    }
-}
 
 
 /* "Sidebar on the left" layout styles */

@@ -5,4 +5,11 @@ footer#pagefooter {
     background-color: var(--tertiary-color);
     padding: 2em;
     text-align: center;
+
+    div.pagewrap {
+        border-bottom: .3rem dashed var(--secondary-color);
+        margin-bottom: 2rem;
+        padding: 0rem 10%;
+        text-align: left;
+    }
 }

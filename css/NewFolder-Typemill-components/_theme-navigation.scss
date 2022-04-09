@@ -19,15 +19,16 @@ nav#pagenav {
         height: calc(100vh - 2rem);
         margin-bottom: 0;
         overflow-y: scroll;  
-        padding-bottom: 2rem;
-        position: absolute;
+        padding-bottom: 50vh;
+        position: fixed;
         width: 100%;
 
         li {
             margin: 0 auto;
             max-width: 80ch;
             padding-bottom: 0rem;
-            padding: 2rem 4rem;
+            padding-left: 2rem;
+            padding-top: 1rem;
 
             a {
                 font-family: var(--monospace-font);
@@ -39,7 +40,7 @@ nav#pagenav {
             ul {
                 li {
 
-                    padding-top: 1.5rem;
+                    padding-top: 1.3rem;
 
                     a {
                         font-family: var(--body-font);
@@ -108,9 +109,17 @@ nav#pagenav {
                 background-color: rgba(0,0,0,0.9);
             }
         }
-
-        @doesn
     }
+
+@media screen and (min-width: 800px) {
+    nav#pagenav {
+        ul.toplevel {
+            li {
+                padding: 2rem 4rem;
+            }
+        }
+    }
+}
 
 /* Styles for the directory/navigation on the home page.
    Follows pretty much the same pattern (structurally 
@@ -131,9 +140,6 @@ nav#directory {
             }
 
             ul {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem;
                 padding-bottom: 1rem;
 
                 li {
@@ -183,6 +189,24 @@ nav#directory {
         }
     }
 
+}
+
+@media screen and (min-width: 550px) {
+
+    nav#directory {
+
+        ul {
+            li {
+                ul  {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 1rem;
+                }
+            }
+        }
+    
+    }
+    
 }
 
 /* Styles for the folder page navigation */
